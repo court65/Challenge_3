@@ -60,24 +60,13 @@ function writePassword() {
 
 }
 
-//function getRandomElementsFromArray(array, numberOfRandomElementsToExtract = 1) {
-  const elements = [];
 
-  function getRandomElement(arr) {
-      if (elements.length < numberOfRandomElementsToExtract) {
-          const index = Math.floor(Math.random() * arr.length)
-          const element = arr.splice(index, 1)[0];
+function randomGenerator(array){
+  var generatedIndex=Math.floor(Math.random() * array.length);
+  var generatedChoice=array[generatedIndex];
 
-          elements.push(element)
-
-          return getRandomElement(arr)
-      } else {
-          return elements
-      }
-  }
-
-  return getRandomElement([...array])
-}//
+  return generatedChoice;
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", userOptions);
