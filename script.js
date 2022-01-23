@@ -70,4 +70,4 @@ function randomGenerator(array){
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", userOptions);
-// generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword);
