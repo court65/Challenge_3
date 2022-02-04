@@ -87,7 +87,7 @@ function generatePassword(){
 
   console.log(remainingChoices, "remainingChoices")
 
-  for (var i=0; i<choices.length; i++){
+  for (var i=0; i<choices.passwordLength; i++){
     var thisChoice=randomGenerator(allChoices);
     finalPassword.push(thisChoice)
   }
@@ -98,7 +98,7 @@ function generatePassword(){
   }
   console.log(finalPassword, "finalPassword line 99")
 
- // return finalPassword.join("");
+  return finalPassword.join("");
   console.log(finalPassword.join(""), "final Password") 
 }
 
