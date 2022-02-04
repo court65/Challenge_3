@@ -41,6 +41,7 @@ if(
 
 var userPicks = {
   passwordLength: passwordLength, 
+  includeUppercase: includeUppercase,
   includeLowercase: includeLowercase,
   includeNumbers: includeNumbers,
   includeSymbols: includeSymbols
@@ -50,6 +51,57 @@ console.log(userPicks);
 return userPicks;
 
 }
+
+function randomGenerator(array){
+  var generatedIndex=Math.floor(Math.random() * array.length);
+  var generatedChoice=array[generatedIndex];
+
+  return generatedChoice;
+}
+
+function generatePassword(){
+  var choices=userOptions();
+  var finalPassword=[];
+  var allChoices=[];
+  var remainingChoices=[];
+
+  if (choices.includeUppercase){
+    allChoices=allChoices.concat(upperCase);
+    remainingChoices.push(randomGenerator(upperCase))
+  }
+
+  if (choices.includeLowercase){
+    allChoices=allChoices.concat(lowerCase);
+    remainingChoices.push(randomGenerator(lowerCase))
+  }
+
+  if (choices.includeNumbers){
+    allChoices=allChoices.concat(numbers);
+    remainingChoices.push(randomGenerator(numbers))
+  }
+
+  if (choices.includeSymbols){
+    allChoices=allChoices.concat(symbols);
+    remainingChoices.push(randomGenerator(symbols))
+  }
+
+  console.log(remainingChoices, "remainingChoices")
+
+  for (var i=0; i<choices.length; i++){
+    var thisChoice=randomGenerator(allChoices);
+    finalPassword.push(thisChoice)
+  }
+  console.log(finalPassword, "finalPassword line 94")
+
+  for (var i=0; i<remainingChoices.length; i++){
+    finalPassword[i]=remainingChoices[i] 
+  }
+  console.log(finalPassword, "finalPassword line 99")
+
+ // return finalPassword.join("");
+  console.log(finalPassword.join(""), "final Password") 
+}
+
 
 // Write password to the #password input
 function writePassword() {
@@ -61,13 +113,7 @@ function writePassword() {
 }
 
 
-function randomGenerator(array){
-  var generatedIndex=Math.floor(Math.random() * array.length);
-  var generatedChoice=array[generatedIndex];
 
-  return generatedChoice;
-}
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", userOptions);
 generateBtn.addEventListener("click", writePassword);
